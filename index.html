@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot with Video Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="animation-container">
+            <img id="video-character" src="defa.gif" alt="Chatbot Animation">
+            <img id="video-character" src="video.gif" alt="Chatbot Animation">
+        </div>
+        <div class="chat-area">
+            <div class="button-container">
+                <button id="micButton" onclick="toggleMic()">Start Listening</button>
+                <button id="welcome-button">Let's Start!</button>
+                <button id="toggle-chat-button" onclick="toggleChatOutput()">Hide Text</button>
+            </div>
+            <div id="listening-animation" style="display: none;">
+                <div class="dot-pulse"></div>
+                <span>Listening...</span>
+            </div>
+            <div id="chat-output"></div>
+            <div class="input-container">
+                <input type="text" id="chat-input" placeholder="Type a message..." />
+                <button id="send-button"><i class="fas fa-paper-plane"></i>Send</button>
+            </div>
+            <button id="instruction-button" class="instruction-button" onclick="openModal()">Show Instructions</button>
+        </div>
+    </div>
+
+
+    <div id="instructionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Instructions</h2>
+            <p>Welcome ! Here’s how to use it:</p>
+            <ul>
+                <li>Click the "Start Listening" button to activate voice input.</li>
+                <li>Type your message in the chat input box and click "Send" to chat.</li>
+                <li>Click "Let's Start" to initiate the chatbot.</li>
+                <li>To hide the chatbot's text output, use the "Hide Text" button.</li>
+                <li>Try speaking small sentences rather than saying single words like 'Yes' or 'Ok'</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Dialogflow Messenger Integration -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('instructionModal');
+
+        // Function to open the modal
+        function openModal() {
+            modal.style.display = 'block';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
